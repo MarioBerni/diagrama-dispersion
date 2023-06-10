@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y"));
       const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S"));
 
-      // Agrega o actualiza los ejes
       const xAxisGroup = svg.selectAll("#x-axis").data([null]);
       xAxisGroup.enter().append("g")
         .merge(xAxisGroup)
@@ -48,31 +47,28 @@ document.addEventListener("DOMContentLoaded", function () {
         .attr("id", "x-axis")
         .call(xAxis);
 
-      xAxisGroup.select(".domain").remove(); // Elimina la línea del eje X
+      xAxisGroup.select(".domain").remove(); 
 
       xAxisGroup.append("text")
         .attr("class", "axis-label")
         .attr("x", width / 2)
-        .attr("y", 50) // Coloca el nombre por debajo del eje X
-        .text("AÑO"); // Nombre del eje X
-
+        .attr("y", 50) 
+        .text("AÑO"); 
       const yAxisGroup = svg.selectAll("#y-axis").data([null]);
       yAxisGroup.enter().append("g")
         .merge(yAxisGroup)
         .attr("id", "y-axis")
         .call(yAxis);
 
-      yAxisGroup.select(".domain").remove(); // Elimina la línea del eje Y
-
+      yAxisGroup.select(".domain").remove(); 
       yAxisGroup.append("text")
         .attr("class", "axis-label")
-        .attr("transform", "rotate(-90)") // Rota el nombre del eje Y
+        .attr("transform", "rotate(-90)") 
         .attr("x", -height / 2)
-        .attr("y", -41) // Coloca el nombre por fuera del eje Y
-        .text("TIEMPO"); // Nombre del eje Y
+        .attr("y", -41) 
+        .text("TIEMPO"); 
 
-      // Agrega o actualiza los puntos
-      const dots = svg.selectAll(".dot")
+        const dots = svg.selectAll(".dot")
         .data(data);
 
       dots.enter().append("circle")
@@ -110,5 +106,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   render();
 
-  window.addEventListener("resize", render); // Refrescar el gráfico cuando se cambie el tamaño de la ventana
+  window.addEventListener("resize", render);
 });
